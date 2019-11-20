@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+{% if memid == True %}
+	<p>이미 사용 중인 id입니다</p>
+	<a href="#" onclick="opener.document.regForm.memid.focus(); window.close()"">닫기</a>
+{% else %}
+	<p>사용 가능한 id입니다</p>
+	<a href="#" onclick="opener.document.regForm.passwd.focus(); window.close()">닫기</a>
+{% endif %}
+</body>
+</html>

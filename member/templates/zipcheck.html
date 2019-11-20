@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/static/js/script.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnZipClose").onclick=function(){
+		window.close();
+	}
+}
+</script>
+</head>
+<body>
+<b>* 주소 입력 후 우편번호 검색 *</b><br>
+<form action="/member/zipcheckok" name="zipForm" method="post">{% csrf_token %}
+<table>
+	<tr>
+		<td>
+			동 이름 : <input type="text" name="area3">
+			<input type="submit" value="검색">
+			<input type="button" value="닫기" id="btnZipClose">
+			<input type="hidden" name="check" value="n">
+		</td>
+	</tr>
+</table>
+</form>
+
+{% if check == 'n' %}
+	{% if datas.count == 0 %}
+		<b>등록된 동 이름이 아닙니다</b>
+	{% else %}
+	<table>
+		<tr><td>동 이름을 클릭하면 동 이름이 입력됩니다</td></tr>
+		<tr>
+			<td>
+				{% for z in datas %}
+					<a href="javascript:send('{{z.1}}','{{z.2}}','{{z.3}}','{{z.4}}','{{z.5}}')">
+					{{z.1}} {{z.2}} {{z.3}} {{z.4}} {{z.5}}
+					</a><br>
+				{% endfor %}
+			</td>
+		</tr>
+	</table>
+	{% endif %}
+{% endif %}
+</body>
+</html>

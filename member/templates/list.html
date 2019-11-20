@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>* 회원 자료 *</h2>
+<a href="/member/insert">회원등록</a>
+<br>
+<table border="1">
+	<tr>
+		<th>id</th><th>회원아이디</th><th>회원명</th><th>기타</th>
+	</tr>
+	{% if members.count > 0 %}
+		{% for m in members %}
+		<tr>
+			<td width="30">{{m.id}}</td>
+			<td>{{m.memid}}</td>
+			<td>{{m.name}}</td>
+			<td>
+				{{m.phone}}, {{m.email}}, {{m.zipcode}}, {{m.address}}, {{m.job}}
+			</td>
+		</tr>
+		{% endfor %}
+	{% else %}
+	<tr><td colspan="3">회원자료가 없습니다</td></tr>
+	{% endif %}
+</table>
+</body>
+</html>
